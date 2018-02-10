@@ -1,4 +1,4 @@
-package com.example.demo.chapter1.useannotation.configration;
+package com.example.demo.chapter1.useannotation.configration.bean;
 
 public class MyBean {
 	
