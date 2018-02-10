@@ -6,10 +6,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.chapter1.annotation.IUser;
-import com.example.demo.chapter1.annotation.service.UserServiceImpl;
-import com.example.demo.chapter1.annotation.service.UserServiceImplWithParam;
-import com.example.demo.chapter1.useannotation.configration.MyBean;
+import com.example.demo.chapter1.useannotation.configration.propertysource.MyBean;
+
 
 /**
  * @SpringBootApplication是Sprnig Boot项目的核心注解，主要目的是开启自动配置
@@ -42,12 +40,7 @@ public class DemoApplication {
 //		IUser serviceImpl2 = (UserServiceImplWithParam)context.getBean("userService");
 //		System.out.println(serviceImpl2.get());
 		
-		MyBean myBean1 = (MyBean) context.getBean("myBean");
-		System.out.println(myBean1.toString());
-		
-		System.out.println();
-		
-		MyBean myBean2 = (MyBean) context.getBean("myBean");
-		System.out.println(myBean2.toString());
+		MyBean myEnvBean = (MyBean) context.getBean("myPSBean");
+		System.out.println(myEnvBean.get());
 	}
 }
