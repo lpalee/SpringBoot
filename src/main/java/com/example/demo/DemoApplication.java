@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.chapter1.annotation.IUser;
 import com.example.demo.chapter1.annotation.service.UserServiceImpl;
 import com.example.demo.chapter1.annotation.service.UserServiceImplWithParam;
+import com.example.demo.chapter1.useannotation.configration.MyBean;
 
 /**
  * @SpringBootApplication是Sprnig Boot项目的核心注解，主要目的是开启自动配置
@@ -27,7 +28,7 @@ import com.example.demo.chapter1.annotation.service.UserServiceImplWithParam;
 @RestController
 public class DemoApplication {
 	
-	@RequestMapping("/test")
+	@RequestMapping("/test/bi")
 	public String test() {
 		return "Hello Spring Boot";
 	}
@@ -35,10 +36,18 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 		
-		IUser serviceImpl1 = (UserServiceImpl) context.getBean("userServiceImpl");
-		System.out.println(serviceImpl1.get());
+//		IUser serviceImpl1 = (UserServiceImpl) context.getBean("userServiceImpl");
+//		System.out.println(serviceImpl1.get());
+//		
+//		IUser serviceImpl2 = (UserServiceImplWithParam)context.getBean("userService");
+//		System.out.println(serviceImpl2.get());
 		
-		IUser serviceImpl2 = (UserServiceImplWithParam)context.getBean("userService");
-		System.out.println(serviceImpl2.get());
+		MyBean myBean1 = (MyBean) context.getBean("myBean");
+		System.out.println(myBean1.toString());
+		
+		System.out.println();
+		
+		MyBean myBean2 = (MyBean) context.getBean("myBean");
+		System.out.println(myBean2.toString());
 	}
 }
